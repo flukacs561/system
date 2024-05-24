@@ -8,8 +8,6 @@
     sessionVariables = {
       BROWSER = "brave";
       CABAL_DIR = "${args.dataHome}/cabal";
-      AGDA_DIR = "${args.dataHome}/agda";
-      STACK_ROOT = "${args.dataHome}/stack";
       PYTHONHISTORY = "${args.dataHome}/python/python-history";
       PYTHON_HISTORY = "${args.dataHome}/python/python-history";
     };
@@ -47,6 +45,14 @@
       
       $view = 'none';
       $recorder = 1;
+    '';
+
+    file."${args.homeDirectory}/.agda/defaults".text = ''
+      standard-library
+    '';
+
+    file."${args.homeDirectory}/.agda/libraries".text = ''
+      ${pkgs.agdaPackages.standard-library}/standard-library.agda-lib
     '';
   };
 
