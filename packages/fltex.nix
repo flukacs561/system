@@ -1,12 +1,14 @@
-{ stdenv, ... }:
+{ stdenv, pkgs, ... }:
 stdenv.mkDerivation rec {
   pname = "fltex";
   tlType = "run";
   name = "fltex";
-  src = builtins.fetchGit {
-    url = "https://codeberg.org/flukacs/fltex.git";
-    # This is the full hash of the commit.
-    rev = "5c4f9dd0e88e5df676eef7b40ef72738570a5c49";
+  src = pkgs.fetchFromGitHub {
+    owner = "flukacs561";
+    repo = "fltex";
+    rev = "6e02fa74a873061e90244ee0abab797c2b65c841";
+    # nix-prefetch-url --unpack https://github.com/flukacs561/fltex/archive/refs/heads/main.zip
+    sha256 = "149ckjrr06vxng5fwi7bancd8mhwcyw0ydhxblz04cdqf2ff7lis";
   };
   installPhase = ''
     mkdir -p $out/tex/latex

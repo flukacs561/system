@@ -1,15 +1,17 @@
-{ lib, haskellPackages }:
-haskellPackages.mkDerivation {
+{ lib, pkgs, ... }:
+pkgs.haskellPackages.mkDerivation {
   pname = "hxh";
   version = "0.1.0.0";
-  src = builtins.fetchGit {
-    url = "https://codeberg.org/flukacs/hxh.git";
-    # This is the full hash of the commit.
-    rev = "44b377d7811646d441c5a64318c8c519359ad015";
+  src = pkgs.fetchFromGitHub {
+    owner = "flukacs561";
+    repo = "hxh";
+    rev = "f46e7b2e6b86148852af8b7c60cedb60f9c43d06";
+    # nix-prefetch-url --unpack https://github.com/flukacs561/hxh/archive/refs/heads/master.zip
+    sha256 = "0gylsfdhv6hxwmwqii1zv5dggd4jjpi9qxpikhv3kipbb20csrni";
   };
   isLibrary = false;
   isExecutable = true;
-  executableHaskellDepends = [ haskellPackages.base ];
+  executableHaskellDepends = [ pkgs.haskellPackages.base ];
   description = "HeliX Haskell extensions";
   license = lib.licenses.gpl3Plus;
   mainProgram = "hxh";

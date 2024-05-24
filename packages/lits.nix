@@ -1,15 +1,17 @@
-{ lib, haskellPackages }:
-haskellPackages.mkDerivation {
+{ lib, pkgs }:
+pkgs.haskellPackages.mkDerivation {
   pname = "lits";
   version = "0.1.0.0";
-  src = builtins.fetchGit {
-    url = "https://codeberg.org/flukacs/lits.git";
-    # This is the full hash of the commit.
-    rev = "e37ebbd8965710d73be37958247fd6ac04b7c818";
+  src = pkgs.fetchFromGitHub {
+    owner = "flukacs561";
+    repo = "lits";
+    rev = "b330cde74c73b3d8fadc3e9a153615327774a109";
+    # nix-prefetch-url --unpack https://github.com/flukacs561/lits/archive/refs/heads/main.zip
+    sha256 = "0jffgj69qim6mafqggi324mzn71fm84k1h5yv2z0d7pa39mnvcvk";
   };
-  isLibrary = false;
+  isLibrary = true;
   isExecutable = true;
-  buildDepends = with haskellPackages; [
+  buildDepends = with pkgs.haskellPackages; [
     base
     aeson
     bytestring
@@ -20,7 +22,7 @@ haskellPackages.mkDerivation {
     tasty
     tasty-hunit
   ];
-  executableHaskellDepends = with haskellPackages; [ base ];
+  executableHaskellDepends = with pkgs.haskellPackages; [ base ];
   description = "Library Tagging System";
   license = lib.licenses.mit;
   mainProgram = "lits";
