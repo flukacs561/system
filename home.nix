@@ -116,10 +116,11 @@
       desktop = "${args.homeDirectory}";
       documents = "${args.homeDirectory}/dox";
       download = "${args.homeDirectory}/let";
-      music = "${args.homeDirectory}/mus";
+      music = "${args.homeDirectory}/aud";
       pictures = "${args.homeDirectory}/pix";
       templates = "${args.homeDirectory}/code";
-      videos = "${args.homeDirectory}/dox/books";
+      videos = "${args.homeDirectory}/vid";
+      publicShare = "${args.homeDirectory}/dox/books";
     };
   };
 
