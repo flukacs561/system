@@ -118,6 +118,7 @@
     pinentry-qt
     # CLI programs
     rsync
+    ripgrep
     git
     ffmpeg
     imagemagick
